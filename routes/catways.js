@@ -7,7 +7,7 @@ const {
   createCatway,
   updateCatway,
   deleteCatway
-} = require('../controllers/catways')
+} = require('../services/catways.js')
 
 /* GET Catways. */
 router.get('/', getCatways);
