@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const clientOptions = {
     useNewUrlParser : true,
-    dnName          : 
+    dbName          : 'API'
 };
 
 exports.initClientDbConnection = async () => {
