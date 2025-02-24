@@ -10,16 +10,18 @@ const {
   authenticate
 } = require('../services/users')
 
+const { checkJWT } = require('../middlewares/private')
+
 /* GET Users. */
-router.get('/', getUsers);
+router.get('/', checkJWT, getUsers);
 /* GET User Details. */
-router.get('/:id', getUserById);
+router.get('/:id', checkJWT, getUserById);
 /* POST New User. */
-router.post('/', createUser);
+router.post('/', checkJWT, createUser);
 /* PUT to update User. */
-router.put('/:id', updateUser);
+router.put('/:id', checkJWT, updateUser);
 /* DELETE User. */
-router.delete('/:id', deleteUser);
+router.delete('/:id', checkJWT, deleteUser);
 
 /* AUTHENTICATE */
 router.post('/authenticate', authenticate)
