@@ -6,18 +6,22 @@ const {
   getUserById,
   createUser,
   updateUser,
-  deleteUser
+  deleteUser,
+  authenticate
 } = require('../services/users')
 
-/* GET Catways. */
+/* GET Users. */
 router.get('/', getUsers);
-/* GET Catway Details. */
+/* GET User Details. */
 router.get('/:id', getUserById);
-/* POST New Catway. */
+/* POST New User. */
 router.post('/', createUser);
-/* PUT to update Catway. */
+/* PUT to update User. */
 router.put('/:id', updateUser);
-/* DELETE Catway. */
+/* DELETE User. */
 router.delete('/:id', deleteUser);
+
+/* AUTHENTICATE */
+router.post('/authenticate', authenticate)
 
 module.exports = router;
