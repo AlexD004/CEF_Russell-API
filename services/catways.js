@@ -25,7 +25,7 @@ exports.getCatwayById = async (req, res, next) => {
     let catway = await Catway.findOne({catwayNumber : id});
 
     if (catway) {
-      return res.status(200).json(catway);
+      return res.status(200).render('catway', { title: 'Catway N°'+id, catway: catway});
     }
 
     return res.status(404).json('Catway not found');

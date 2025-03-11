@@ -2,11 +2,59 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
 a {
   color: #00B7FF;
+  text-decoration: none;
+}
+ul, li {
+  list-style: none;
+  padding: 0;
 }
 
+/* Global */
+.detailContent {
+  display: flex;
+  justify-content: space-between;
+}
+.infos{
+  width: 75%;
+  border: 1px solid #444;
+  padding: 10px;
+  border-radius: 10px;
+}
+.actions{
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.actions a {
+  display: block;
+  width: 100%;
+  background: #444;
+  color:#fff;
+  padding: 5px;
+  margin: 2px 0;
+  text-align: center;
+  border-radius: 5px;
+  transition: .5s;
+}
+.actions a:hover {
+  background: #00B7FF;
+}
+
+.actions a.deleteBtn {
+  background: red;
+  color:#fff;
+  border:none;
+}
+.actions a.deleteBtn:hover {
+  background: rgb(235, 179, 179);
+  color:red;
+}
+
+/* DASHBOARD */
 .card {
   display: flex;
   justify-content: center;
@@ -23,14 +71,36 @@ a {
   margin: 5px 0;
   padding: 5px 10px;
   border-radius: 5px;
-
   text-align: center;
-
-  text-decoration: none;
   background: #444;
   color:#fff;
   transition: .5s;
 }
 .card a:hover {
   background: #00B7FF;
+}
+
+/* CATWAYS */
+.cardList {
+  display: flex;
+  flex-wrap: wrap;
+}
+.cardList a {
+  min-width: 20%;
+  padding: 20px;
+  margin: 5px;
+  border:1px solid #ccc;
+  border-radius: 10px;
+  color:#000;
+  transition: .5s;
+}
+.cardList a:hover {
+  background: #eee;
+  cursor: pointer;
+}
+.catwayCard h3 {
+  margin: 5px 0;
+}
+.catwayCard p {
+  margin: 0;
 }
