@@ -7,7 +7,8 @@ exports.getCatways = async (req, res, next) => {
     let catways = await Catway.find();
 
     if (catways) {
-      return res.status(200).json(catways);
+      //return res.status(200).json(catways);
+      return res.status(200).render('catways', { title: 'Liste des Catways', catways: catways});
     }
 
     return res.status(404).json('Catways not found');

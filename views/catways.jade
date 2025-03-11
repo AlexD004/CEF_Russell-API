@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  p Liste des catways
+
+  ul
+    for catway in catways
+        li
+            ul
+                li Catway N°#{catway.catwayNumber}
+                li Type : #{catway.type}
+                li État #{catway.catwayState}

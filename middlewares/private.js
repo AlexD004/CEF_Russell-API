@@ -1,14 +1,14 @@
 const jwt = require('jsonwebtoken');
-const SECRET_KEY = process.env.SECRET_KEY;
 
 exports.checkJWT = async (req, res, next) => {
-    let token = req.headers['x-access-token'] || req.headers['authorization'];
+
+    /*let token = req.headers['x-access-token'] || req.headers['authorization'];
     if (!!token && token.startsWith('Bearer')) {
         token = token.slice(7, token.lenght);
     }
 
     if (token) {
-        jwt.verify(token, SECRET_KEY, (err, decoded) => {
+        jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
             if (err) {
                 return res.status(401).json('token not valid');
             } else {
@@ -29,5 +29,16 @@ exports.checkJWT = async (req, res, next) => {
         });
     } else {
         return res.status(401).json('token required');
-    }
+    }*/
+
+    const authCookie = req.cookies['jwt'];
+
+    if(authCookie == null) return res.sendStatus(401);
+
+    jwt.verify(authCookie, process.env.SECRET_KEY, (err, user) => {
+        if(err) return res.sendStatus(403);
+
+        req.user = user;
+        next();
+    })
 }
