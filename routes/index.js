@@ -16,6 +16,11 @@ router.get('/dashboard',checkJWT, function(req, res, next) {
   res.render('dashboard', { title: 'Tableau de bord' });
 });
 
+/* FORM Catway */
+router.get('/form-catways',checkJWT, function(req, res, next) {
+  res.render('formCatways', { title: 'Ajouter un catway', action: 'Ajouter' });
+});
+
 router.use('/users', userRouter);
 router.use('/catways', catwaysRouter);
 

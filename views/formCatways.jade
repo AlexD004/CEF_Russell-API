@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1 #{action} un cateway
+
+  form(action="/catways/", method="post")
+    label Numéro du catway
+    br
+    input(type="text", name="catwayNumber")
+    br
+    label Type de catway 
+    br
+    select(name="type")
+      option(value = 'Short') Court
+      option(value = 'Long') Long
+    br
+    label État du catway
+    br
+    input(type="text", name="catwayState")
+    br
+    input(type="submit", value='#{action}')
