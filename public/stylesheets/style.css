@@ -29,27 +29,28 @@ ul, li {
   align-items: center;
   flex-direction: column;
 }
-.actions a {
+.actions button {
   display: block;
   width: 100%;
   background: #444;
+  border: none;
   color:#fff;
   padding: 5px;
   margin: 2px 0;
   text-align: center;
   border-radius: 5px;
   transition: .5s;
+  cursor: pointer;
 }
-.actions a:hover {
+.actions button:hover {
   background: #00B7FF;
 }
 
-.actions a.deleteBtn {
+.actions button.deleteBtn {
   background: red;
   color:#fff;
-  border:none;
 }
-.actions a.deleteBtn:hover {
+.actions button.deleteBtn:hover {
   background: rgb(235, 179, 179);
   color:red;
 }

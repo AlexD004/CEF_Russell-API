@@ -44,9 +44,9 @@ exports.createCatway = async (req, res, next) => {
   });
 
   try {
-    let catway = await Catway.create(temp);
+    await Catway.create(temp);
 
-    return res.status(201).json(catway);
+    return res.status(201).redirect('/catways/' + temp.catwayNumber);
 
   } catch (error) {
     return res.status(501).json(error);
@@ -86,11 +86,10 @@ exports.updateCatway = async (req, res, next) => {
 /* DELETE Catway. */
 exports.deleteCatway = async (req, res, next)  => {
   const id = req.params.id
-
   try {
     await Catway.deleteOne({catwayNumber: id});
 
-    return res.status(201).json('Catway deleted');
+    return res.send(200);
 
   } catch (error) {
     return res.status(501).json(error);

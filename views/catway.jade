@@ -10,6 +10,7 @@ block content
             p État : #{catway.catwayState}
 
         div.actions
-            a(href="") Réserver 
-            a(href="") Modifier 
-            a.deleteBtn(href="") Supprimer 
+            button(onclick="") Réserver
+            button(onclick="") Modifier
+
+            button.deleteBtn(onclick="deleteCatway( #{catway.catwayNumber} )") Supprimer
