@@ -11,6 +11,7 @@ block content
 
         div.actions
             button(onclick="") Réserver
-            button(onclick="") Modifier
+            a(href="/update-catways/#{catway.catwayNumber}")
+                button Modifier
 
             button.deleteBtn(onclick="deleteCatway( #{catway.catwayNumber} )") Supprimer

@@ -29,6 +29,9 @@ ul, li {
   align-items: center;
   flex-direction: column;
 }
+.actions a {
+  width: 100%;
+}
 .actions button {
   display: block;
   width: 100%;

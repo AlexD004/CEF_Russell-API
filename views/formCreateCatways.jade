@@ -1,9 +1,9 @@
 extends layout
 
 block content
-  h1 #{action} un cateway
+  h1 Ajouter un cateway
 
-  form#createCatway(action="", method="post")
+  form#formCreateCatway(action="", method="post")
     label Numéro du catway
     br
     input(type="text", name="catwayNumber")
@@ -18,4 +18,4 @@ block content
     br
     input(type="text", name="catwayState")
     br
-    input(type="submit", value='#{action}')
+    input(type="submit", value='Ajouter')
