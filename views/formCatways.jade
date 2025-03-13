@@ -3,7 +3,7 @@ extends layout
 block content
   h1 #{action} un cateway
 
-  form(action="/catways/", method="post")
+  form#createCatway(action="", method="post")
     label Numéro du catway
     br
     input(type="text", name="catwayNumber")

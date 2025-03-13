@@ -42,11 +42,10 @@ exports.createCatway = async (req, res, next) => {
     type: req.body.type,
     catwayState: req.body.catwayState
   });
-
   try {
     await Catway.create(temp);
 
-    return res.status(201).redirect('/catways/' + temp.catwayNumber);
+    return res.sendStatus(201);
 
   } catch (error) {
     return res.status(501).json(error);
@@ -89,7 +88,7 @@ exports.deleteCatway = async (req, res, next)  => {
   try {
     await Catway.deleteOne({catwayNumber: id});
 
-    return res.send(200);
+    return res.sendStatus(200);
 
   } catch (error) {
     return res.status(501).json(error);
