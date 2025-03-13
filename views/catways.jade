@@ -2,12 +2,9 @@ extends layout
 
 block content
   h1= title
-  p Liste des catways
 
-  ul
+  ul.cardList
     for catway in catways
-        li
-            ul
-                li Catway N°#{catway.catwayNumber}
-                li Type : #{catway.type}
-                li État #{catway.catwayState}
+        a(href="/catways/#{catway.catwayNumber}")
+            li.catwayCard
+                h3 Catway N°#{catway.catwayNumber}

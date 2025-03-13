@@ -7,7 +7,6 @@ exports.getCatways = async (req, res, next) => {
     let catways = await Catway.find();
 
     if (catways) {
-      //return res.status(200).json(catways);
       return res.status(200).render('catways', { title: 'Liste des Catways', catways: catways});
     }
 
@@ -26,7 +25,7 @@ exports.getCatwayById = async (req, res, next) => {
     let catway = await Catway.findOne({catwayNumber : id});
 
     if (catway) {
-      return res.status(200).json(catway);
+      return res.status(200).render('catway', { title: 'Catway N°'+id, catway: catway});
     }
 
     return res.status(404).json('Catway not found');
@@ -43,11 +42,10 @@ exports.createCatway = async (req, res, next) => {
     type: req.body.type,
     catwayState: req.body.catwayState
   });
-
   try {
-    let catway = await Catway.create(temp);
+    await Catway.create(temp);
 
-    return res.status(201).json(catway);
+    return res.sendStatus(201);
 
   } catch (error) {
     return res.status(501).json(error);
@@ -87,13 +85,39 @@ exports.updateCatway = async (req, res, next) => {
 /* DELETE Catway. */
 exports.deleteCatway = async (req, res, next)  => {
   const id = req.params.id
-
   try {
     await Catway.deleteOne({catwayNumber: id});
 
-    return res.status(201).json('Catway deleted');
+    return res.sendStatus(200);
 
   } catch (error) {
     return res.status(501).json(error);
   }
 };
+
+/* GET => FORM CREATE Catway */
+exports.formCreateCatway = (req, res, next)  => {
+  try {
+    res.render('formCreateCatways', { title: 'Ajouter un catway' });
+  } catch (error) {
+    return res.status(501).json(error);
+  }
+};
+
+/* GET => FORM UPDATE Catway */
+exports.formUpdateCatway = async (req, res, next) => {
+  const id = req.params.id
+  
+  try {
+    let catway = await Catway.findOne({catwayNumber : id});
+
+    if (catway) {
+      return res.status(200).render('formUpdateCatways', { title: 'Modifier un catway', catway: catway});
+    }
+
+    return res.status(404).json('Catway not found');
+
+  } catch (error) {
+    return res.status(501).json(error);
+  }
+}

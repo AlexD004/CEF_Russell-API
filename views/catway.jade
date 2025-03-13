@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    h1= title
+
+    div.detailContent
+
+        div.infos
+            p Type : #{catway.type}
+            p État : #{catway.catwayState}
+
+        div.actions
+            button(onclick="") Réserver
+            a(href="/update-catways/#{catway.catwayNumber}")
+                button Modifier
+
+            button.deleteBtn(onclick="deleteCatway( #{catway.catwayNumber} )") Supprimer

@@ -2,6 +2,8 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
 
-  a(href="/catways") Voir les catways
+  div.card
+    h2 Catways
+    a(href="/catways") Voir tous les catways
+    a(href="/create-catways") Ajouter un catway

@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1 Modifier un cateway
+
+  form#formUpdateCatway(action="", method="post")
+    label Numéro du catway
+    br
+    input(type="text", name="catwayNumber", value="#{catway.catwayNumber}")
+    br
+    label Type de catway 
+    br
+    select(name="type")
+        if catway.type == 'Short'
+            option(value = 'Short' selected) Court
+            option(value = 'Long' ) Long
+        else 
+            option(value = 'Short') Court
+            option(value = 'Long' selected) Long
+      
+    br
+    label État du catway
+    br
+    input(type="text", name="catwayState", value="#{catway.catwayState}")
+    br
+    input(type="submit", value='Modifier')

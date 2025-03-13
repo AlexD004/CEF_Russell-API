@@ -3,11 +3,13 @@ const cookieParser  = require('cookie-parser');
 const logger        = require('morgan');
 const cors          = require('cors');
 
+const bodyParser = require('body-parser');
 const createError   = require('http-errors');
 const path          = require('path');
 
 const indexRouter   = require('./routes/index');
 const usersRouter   = require('./routes/users');
+const catwaysRouter   = require('./routes/catways');
 const mongodb      = require('./db/mongo');
 
 mongodb.initClientDbConnection();
@@ -24,12 +26,16 @@ app.use(cors({
 }));
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/catways', catwaysRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
