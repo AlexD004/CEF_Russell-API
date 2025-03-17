@@ -30,4 +30,17 @@ router.put('/:id', checkJWT, updateCatway);
 /* DELETE Catway. */
 router.delete('/:id', checkJWT, deleteCatway);
 
+/* ROUTES FOR BOOKING */
+
+/* GET Bookings. */
+router.get('/reservations', checkJWT, getBookings);
+/* GET Bookings list by catway. */
+router.get('/:id/reservations', checkJWT, getBookingsByCatway);
+/* GET Booking details by ID. */
+router.get('/:id/reservations/:idReservation', checkJWT, getBookingById);
+/* POST New Booking. */
+router.post('/:id/reservations', checkJWT, createBooking);
+/* DELETE Booking. */
+router.delete('/:id/reservations/:idReservation', checkJWT, deleteBooking);
+
 module.exports = router;

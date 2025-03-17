@@ -5,10 +5,6 @@ const Booking = new Schema({
     bookingID:{
         type        : Number
     },
-    catwayNumber: {
-        type        : Number,
-        required    : [true, 'Le numéro de catway est requis']
-    },
     clientName: {
         type        : String,
         trim        : true,
