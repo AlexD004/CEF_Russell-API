@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1 Ajouter un utilisateur
+
+  form#formCreateUser(action="", method="post")
+    label Nom d'utilisateur
+    br
+    input(type="text", name="name")
+    br
+    label Adresse email
+    br
+    input(type="email", name="email")
+    br
+    label Mot de passe
+    br
+    input(type="text", name="password")
+    br
+    input(type="submit", value='Ajouter')

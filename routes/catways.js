@@ -8,8 +8,16 @@ const {
   getCatwayById,
   createCatway,
   updateCatway,
-  deleteCatway
+  deleteCatway,
+  formCreateCatway,
+  formUpdateCatway
 } = require('../services/catways.js')
+
+
+/* FORM CREATE Catway */
+router.get('/create-catways',checkJWT, formCreateCatway);
+/* FORM UPDATE Catway */
+router.get('/update-catways/:id',checkJWT, formUpdateCatway);
 
 /* GET Catways. */
 router.get('/', checkJWT, getCatways);
