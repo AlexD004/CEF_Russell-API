@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+
+  ul.cardList
+    for user in users
+        a(href="/users/#{user.userID}")
+            li.catwayCard
+                h3 #{user.name}

@@ -7,10 +7,18 @@ const {
   createUser,
   updateUser,
   deleteUser,
-  authenticate
+  authenticate,
+  formCreateUser,
+  formUpdateUser
 } = require('../services/users')
 
 const { checkJWT } = require('../middlewares/private')
+
+
+/* FORM CREATE User */
+router.get('/create-users',checkJWT, formCreateUser);
+/* FORM UPDATE User */
+router.get('/update-user/:id',checkJWT, formUpdateUser);
 
 /* GET Users. */
 router.get('/', checkJWT, getUsers);

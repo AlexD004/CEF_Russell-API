@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    h1= title
+
+    div.detailContent
+
+        div.infos
+            p email : #{user.email}
+
+        div.actions
+            a(href="/users/update-user/#{user.userID}")
+                button Modifier
+
+            button.deleteBtn(onclick="deleteUser( #{user.userID} )") Supprimer

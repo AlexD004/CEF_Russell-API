@@ -30,7 +30,6 @@ if(formUpdateCatway){
         e.preventDefault();
 
         const id = document.querySelector('input[name="catwayNumber"]').value;
-        console.log(id);
         const dataForm = { };
 
         new FormData( formUpdateCatway ).forEach( ( value, key ) => dataForm[ key ] = value );

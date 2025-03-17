@@ -9,7 +9,7 @@ exports.getUsers = async (req, res, next) => {
     let users = await User.find();
 
     if (users) {
-      return res.status(200).json(users);
+      return res.status(200).render('users', { title: 'Liste des utilisateurs', users: users});
     }
 
     return res.status(404).json('Users not found');
@@ -27,7 +27,7 @@ exports.getUserById = async (req, res, next) => {
     let user = await User.findOne({userID : id});
 
     if (user) {
-      return res.status(200).json(user);
+      return res.status(200).render('user', { title: user.name, user: user});
     }
 
     return res.status(404).json('User not found');
@@ -39,17 +39,19 @@ exports.getUserById = async (req, res, next) => {
 
 /* POST New User. */
 exports.createUser = async (req, res, next) => { 
+  let users = await User.find();
+  const newUserID = users.length + 1;
   const temp = ({
-    userID      : req.body.userID,
+    userID      : newUserID,
     name    : req.body.name,
     email   : req.body.email,
     password: req.body.password
   });
 
   try {
-    let user = await User.create(temp);
+    await User.create(temp);
 
-    return res.status(201).json(user);
+    return res.status(201).json({status : 201, userID : newUserID});
 
   } catch (error) {
     return res.status(501).json(error);
@@ -62,8 +64,7 @@ exports.updateUser = async (req, res, next) => {
   const temp = ({
     userID      : req.body.userID,
     name    : req.body.name,
-    email   : req.body.email,
-    password: req.body.password
+    email   : req.body.email
   });
 
   try {
@@ -94,7 +95,7 @@ exports.deleteUser = async (req, res, next)  => {
   try {
     await User.deleteOne({userID: id});
 
-    return res.status(201).json('User deleted');
+    return res.sendStatus(200);
 
   } catch (error) {
     return res.status(501).json(error);
@@ -135,6 +136,33 @@ exports.authenticate = async (req, res, next) => {
     } else {
       return res.status(404).json('User not found');
     }
+  } catch (error) {
+    return res.status(501).json(error);
+  }
+} 
+
+/* GET => FORM CREATE USer */
+exports.formCreateUser = (req, res, next)  => {
+  try {
+    res.render('formCreateUsers', { title: 'Ajouter un utilisateur' });
+  } catch (error) {
+    return res.status(501).json(error);
+  }
+};
+
+/* GET => FORM UPDATE User */
+exports.formUpdateUser = async (req, res, next) => {
+  const id = req.params.id
+  
+  try {
+    let user = await User.findOne({userID : id});
+
+    if (user) {
+      return res.status(200).render('formUpdateUsers', { title: 'Modifier un utilisateur', user: user});
+    }
+
+    return res.status(404).json('User not found');
+
   } catch (error) {
     return res.status(501).json(error);
   }

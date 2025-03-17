@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1 Ajouter un utilisateur
+
+  form#formUpdateUser(action="", method="post")
+    input(type="hidden", name="userID", value="#{user.userID}")
+    label Nom d'utilisateur
+    br
+    input(type="text", name="name", value="#{user.name}")
+    br
+    label Adresse email
+    br
+    input(type="email", name="email", value="#{user.email}")
+    br
+    input(type="submit", value='Modifier')
