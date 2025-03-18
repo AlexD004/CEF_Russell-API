@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    h1= title
+
+    div.detailContent
+
+        div.infos
+            p Catway N° #{catwayNumber}
+            br
+            p Client : #{booking.clientName}
+            p Bateau : #{booking.boatName}
+            br
+            p du #{booking.checkIn} au #{booking.checkOut}
+
+        div.actions
+            a(href="/catways/#{catwayNumber}")
+                button Retour au Catway
+
+            button.deleteBtn(onclick="deleteBooking( #{catwayNumber}, #{booking.bookId} )") Supprimer

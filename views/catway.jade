@@ -6,12 +6,15 @@ block content
     div.detailContent
 
         div.infos
-            p Type : #{catway.type}
+            p Type : #{catway.type} 
             p État : #{catway.catwayState}
 
         div.actions
-            button(onclick="") Réserver
+            a(href="/catways/#{catway.catwayNumber}/reservations")
+                button Voir les réservations
+            a(href="/catways/#{catway.catwayNumber}/create-reservation")
+                button Créer une réservations
             a(href="/catways/update-catways/#{catway.catwayNumber}")
-                button Modifier
+                button Modifier le catway
 
             button.deleteBtn(onclick="deleteCatway( #{catway.catwayNumber} )") Supprimer

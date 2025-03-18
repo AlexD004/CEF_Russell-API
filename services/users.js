@@ -40,7 +40,14 @@ exports.getUserById = async (req, res, next) => {
 /* POST New User. */
 exports.createUser = async (req, res, next) => { 
   let users = await User.find();
-  const newUserID = users.length + 1;
+
+  let usersIDArray = [];
+  for (i=0;i < users.length; i++) {
+    usersIDArray.push(users[i].userID);
+  }
+  let maxID = Math.max(...usersIDArray);
+  const newUserID = maxID + 1;
+
   const temp = ({
     userID      : newUserID,
     name    : req.body.name,

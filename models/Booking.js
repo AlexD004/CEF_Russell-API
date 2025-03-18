@@ -2,7 +2,10 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const Booking = new Schema({
-    bookingID:{
+    bookId: {
+        type        : Number
+    },
+    catwayNumber: {
         type        : Number
     },
     clientName: {
@@ -27,4 +30,4 @@ const Booking = new Schema({
     timestamps      : true
 });
 
-module.exports = mongoose.model('Catway', Catway) ;
+module.exports = mongoose.model('Booking', Booking) ;

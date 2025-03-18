@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+
+  ul.cardList
+    for booking in bookings
+        a(href="/catways/#{catwayNumber}/reservations/#{booking.bookId}")
+            li.itemCard
+                h3 Réservation N°#{booking._id}
+                br
+                p Client : #{booking.clientName}
+                p Bateau : #{booking.boatName}
+                br
+                p du #{booking.checkIn} au #{booking.checkOut}
