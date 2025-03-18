@@ -1,7 +1,10 @@
 const Catway = require('../models/Catway.js')
 const Booking = require('../models/Booking.js')
 
-/* GET Bookings. */
+/**
+ * @param {*} req nothing particular
+ * @returns {number} Status Code (if 200, redirect user)
+ */
 exports.getBookings = async (req, res, next) => {
     const id = parseInt(req.params.id);
   try {
@@ -19,7 +22,14 @@ exports.getBookings = async (req, res, next) => {
   }
 }
 
-/* GET Booking Details. */ '/:id/reservations/:idReservation'
+/**
+ * @typedef {object} req
+ * @property {number} id 'catwayNumber'
+ * @property {number} idReservation 'bookId'
+ * 
+ * @param {req} req request with catwayNumber as 'id' and bookId as 'idReservation'
+ * @returns {number} Status Code (if 200, redirect user)
+ */
 exports.getBookingById = async (req, res, next) => {
   const id = req.params.idReservation;
   const catwayNumber = req.params.id;
@@ -38,7 +48,13 @@ exports.getBookingById = async (req, res, next) => {
   }
 }
 
-/* POST New Booking. */
+/**
+ * @typedef {object} req
+ * @property {number} id 'catwayNumber' of clicked booking
+ * 
+ * @param {req} req request with FormData in body and catwayNumber as 'id'
+ * @returns {object} {Status Code , bookId of the new booking}
+ */
 exports.createBooking = async (req, res, next) => { 
 
     const id = parseInt(req.params.id);
@@ -75,7 +91,13 @@ exports.createBooking = async (req, res, next) => {
   }
 };
 
-/* DELETE Booking. */
+/**
+ * @typedef {object} req
+ * @property {number} id 'bookId' of clicked booking
+ * 
+ * @param {req} req request : bookId as 'id'
+ * @returns {number} Status Code
+ */
 exports.deleteBooking = async (req, res, next)  => {
   const id = req.params.idReservation
   try {
@@ -88,7 +110,13 @@ exports.deleteBooking = async (req, res, next)  => {
   }
 };
 
-/* GET => FORM CREATE Boooking */
+/**
+ * @typedef {object} req
+ * @property {number} id 'catwayNumber' of clicked booking
+ * 
+ * @param {req} req request : catwayNumber as 'id'
+ * @returns {render} Redirect user
+ */
 exports.formCreateBooking = (req, res, next)  => {
     const id = req.params.id;
     try {
