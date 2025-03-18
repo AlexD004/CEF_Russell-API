@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1 Enregistrer une réservation
+
+  form#formCreateBooking(action="", method="post")
+    input(type="hidden" name="catwayNumber" value="#{id}")
+    label Nom du client
+    br
+    input(type="text", name="clientName")
+    br
+    label Nom du bateau
+    br
+    input(type="text", name="boatName")
+    br
+    label Début de réservation
+    br
+    input(type="date", name="checkIn")
+    br
+    label Fin de réservation
+    br
+    input(type="date", name="checkOut")
+    br
+    input(type="submit", value='Ajouter')

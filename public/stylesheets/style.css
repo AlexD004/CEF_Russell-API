@@ -10,8 +10,7 @@ ul, li {
   list-style: none;
   padding: 0;
 }
-
-/* Global */
+/* Content */
 .detailContent {
   display: flex;
   justify-content: space-between;
@@ -61,7 +60,7 @@ ul, li {
 /* DASHBOARD */
 .cardContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
 }
 .card {
@@ -69,8 +68,8 @@ ul, li {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 30%;
   padding: 20px;
+  margin:5px 0;
   
   border:1px solid #ccc;
   border-radius: 10px;
@@ -107,9 +106,9 @@ ul, li {
   background: #eee;
   cursor: pointer;
 }
-.catwayCard h3 {
+.itemCard h3 {
   margin: 5px 0;
 }
-.catwayCard p {
+.itemCard p {
   margin: 0;
 }
