@@ -1,6 +1,9 @@
 const Catway = require('../models/Catway.js')
 
-/* GET Catways. */
+/**
+ * @param {*} req nothing particular
+ * @returns {number} Status Code (if 200, redirect user)
+ */
 exports.getCatways = async (req, res, next) => {
 
   try {
@@ -17,10 +20,16 @@ exports.getCatways = async (req, res, next) => {
   }
 }
 
-/* GET Catway Details. */
+/**
+ * @typedef {object} req
+ * @property {number} id 'catwayNumber' of clicked catway
+ * 
+ * @param {req} req request with catwayNumber as 'id'
+ * @returns {number} Status Code (if 200, redirect user)
+ */
 exports.getCatwayById = async (req, res, next) => {
   const id = req.params.id
-  
+
   try {
     let catway = await Catway.findOne({catwayNumber : id});
 
@@ -35,7 +44,11 @@ exports.getCatwayById = async (req, res, next) => {
   }
 }
 
-/* POST New Catway. */
+/**
+ * 
+ * @param {req} req request with FormData in body
+ * @returns {number} Status Code
+ */
 exports.createCatway = async (req, res, next) => { 
   const temp = ({
     catwayNumber: req.body.catwayNumber,
@@ -52,7 +65,13 @@ exports.createCatway = async (req, res, next) => {
   }
 };
 
-/* PUT to update Catway. */
+/**
+ * @typedef {object} req
+ * @property {number} id 'catwayNumber' of clicked catway
+ * 
+ * @param {req} req request : catwayNumber as 'id' / FormData in body
+ * @returns {number} Status Code
+ */
 exports.updateCatway = async (req, res, next) => {
   const id = req.params.id
   const temp = ({
@@ -82,7 +101,13 @@ exports.updateCatway = async (req, res, next) => {
   }
 };
 
-/* DELETE Catway. */
+/**
+ * @typedef {object} req
+ * @property {number} id 'catwayNumber' of clicked catway
+ * 
+ * @param {req} req request : catwayNumber as 'id'
+ * @returns {number} Status Code
+ */
 exports.deleteCatway = async (req, res, next)  => {
   const id = req.params.id
   try {
@@ -95,7 +120,11 @@ exports.deleteCatway = async (req, res, next)  => {
   }
 };
 
-/* GET => FORM CREATE Catway */
+/**
+ * 
+ * @param {req} req nothing particular
+ * @returns {render} Redirect user
+ */
 exports.formCreateCatway = (req, res, next)  => {
   try {
     res.render('formCreateCatways', { title: 'Ajouter un catway' });
@@ -104,7 +133,13 @@ exports.formCreateCatway = (req, res, next)  => {
   }
 };
 
-/* GET => FORM UPDATE Catway */
+/**
+ * @typedef {object} req
+ * @property {number} id 'catwayNumber' of catway to update
+ * 
+ * @param {req} req request : catwayNumber as 'id'
+ * @returns {number} Status Code (if 200, redirect user)
+ */
 exports.formUpdateCatway = async (req, res, next) => {
   const id = req.params.id
   

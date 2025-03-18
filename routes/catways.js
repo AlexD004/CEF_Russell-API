@@ -31,7 +31,7 @@ router.get('/:id/reservations', checkJWT, getBookings);
 /* GET Booking details by ID. */
 router.get('/:id/reservations/:idReservation', checkJWT, getBookingById);
 /* POST New Booking. */
-router.post('/:id/reservations', createBooking);
+router.post('/:id/reservations', checkJWT, createBooking);
 /* DELETE Booking. */
 router.delete('/:id/reservations/:idReservation', checkJWT, deleteBooking);
 

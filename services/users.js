@@ -2,7 +2,10 @@ const User = require('../models/User.js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-/* GET Users. */
+/**
+ * @param {*} req nothing particular
+ * @returns {number} Status Code (if 200, redirect user)
+ */
 exports.getUsers = async (req, res, next) => {
 
   try {
@@ -19,7 +22,13 @@ exports.getUsers = async (req, res, next) => {
   }
 }
 
-/* GET User Details. */
+/**
+ * @typedef {object} req
+ * @property {number} id 'userID' of clicked user
+ * 
+ * @param {req} req request with userID as 'id'
+ * @returns {number} Status Code (if 200, redirect user)
+ */
 exports.getUserById = async (req, res, next) => {
   const id = req.params.id
   
@@ -37,7 +46,11 @@ exports.getUserById = async (req, res, next) => {
   }
 }
 
-/* POST New User. */
+/**
+ * 
+ * @param {req} req request with FormData in body
+ * @returns {obect} {status code , userID of the new user}
+ */
 exports.createUser = async (req, res, next) => { 
   let users = await User.find();
 
@@ -65,7 +78,13 @@ exports.createUser = async (req, res, next) => {
   }
 };
 
-/* PUT to updateUuser. */
+/**
+ * @typedef {object} req
+ * @property {number} id 'userID' of clicked user
+ * 
+ * @param {req} req request : userID as 'id' / FormData in body
+ * @returns {number} Status Code
+ */
 exports.updateUser = async (req, res, next) => {
   const id = req.params.id
   const temp = ({
@@ -95,7 +114,13 @@ exports.updateUser = async (req, res, next) => {
   }
 };
 
-/* DELETE User. */
+/**
+ * @typedef {object} req
+ * @property {number} id 'userID' of clicked user
+ * 
+ * @param {req} req request : userID as 'id' / FormData in body
+ * @returns {number} Status Code
+ */
 exports.deleteUser = async (req, res, next)  => {
   const id = req.params.id
 
@@ -109,7 +134,14 @@ exports.deleteUser = async (req, res, next)  => {
   }
 };
 
-/* Method for auth */
+/**
+ * @typedef {object} req
+ * @property {string} email
+ * @property {string} password
+ * 
+ * @param {req} req request : userID as 'id' / FormData in body
+ * @returns {number} Status Code (if 200 : redirect user)
+ */
 exports.authenticate = async (req, res, next) => {
   const { email, password } = req.body;
 
@@ -148,7 +180,11 @@ exports.authenticate = async (req, res, next) => {
   }
 } 
 
-/* GET => FORM CREATE USer */
+/**
+ * 
+ * @param {req} req nothing particular
+ * @returns {render} Redirect user
+ */
 exports.formCreateUser = (req, res, next)  => {
   try {
     res.render('formCreateUsers', { title: 'Ajouter un utilisateur' });
@@ -157,7 +193,13 @@ exports.formCreateUser = (req, res, next)  => {
   }
 };
 
-/* GET => FORM UPDATE User */
+/**
+ * @typedef {object} req
+ * @property {number} id 'userID' of user to update
+ * 
+ * @param {req} req request : userID as 'id'
+ * @returns {number} Status Code (if 200, redirect user)
+ */
 exports.formUpdateUser = async (req, res, next) => {
   const id = req.params.id
   
