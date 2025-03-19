@@ -163,10 +163,9 @@ exports.authenticate = async (req, res, next) => {
           {
             expiresIn: expireIn
           });
-
+          
           res.header('Authorization', 'Bearer ' + token);
           res.cookie('jwt', token, { httpOnly: true, secure: true, maxAge: expireIn });
-          //return res.status(200).json('authenticate_succeed');
           return res.status(200).redirect('/dashboard');
         }
 
