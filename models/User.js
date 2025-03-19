@@ -5,7 +5,8 @@ const bcrypt = require('bcrypt');
 
 const User = new Schema({
     userID:{
-        type        : Number
+        type        : Number,
+        required    : [true, 'ID manquant']
     },
     name: {
         type        : String,

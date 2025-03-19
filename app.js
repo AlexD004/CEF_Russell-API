@@ -2,15 +2,17 @@ const express       = require('express');
 const cookieParser  = require('cookie-parser');
 const logger        = require('morgan');
 const cors          = require('cors');
+const swaggerJsdoc  = require('swagger-jsdoc');
+const swaggerUi     = require('swagger-ui-express');
 
-const bodyParser = require('body-parser');
+const bodyParser    = require('body-parser');
 const createError   = require('http-errors');
 const path          = require('path');
 
 const indexRouter   = require('./routes/index');
 const usersRouter   = require('./routes/users');
-const catwaysRouter   = require('./routes/catways');
-const mongodb      = require('./db/mongo');
+const catwaysRouter = require('./routes/catways');
+const mongodb       = require('./db/mongo');
 
 mongodb.initClientDbConnection();
 
@@ -31,6 +33,25 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Swagger configurations for Documentation
+const options = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Russell API Documentation',
+      version: '1.0.0',
+      description: 'Documentation de l\'API de la capitainerie Russell'
+    },
+  },
+  apis: ['./routes/*.js']
+}
+
+// Set spec for OpenAPI
+const specs = swaggerJsdoc(options);
+
+// Route for swagger documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 
 app.use('/', indexRouter);

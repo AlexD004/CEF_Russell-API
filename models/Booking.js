@@ -3,10 +3,12 @@ const Schema = mongoose.Schema;
 
 const Booking = new Schema({
     bookId: {
-        type        : Number
+        type        : Number,
+        required    : [true, 'ID manquant']
     },
     catwayNumber: {
-        type        : Number
+        type        : Number,
+        required    : [true, 'Numéro de catway manquant']
     },
     clientName: {
         type        : String,

@@ -91,7 +91,7 @@ exports.updateCatway = async (req, res, next) => {
       });
 
       await catway.save();
-      return res.status(201).json(catway);
+      return res.status(201);
     }
 
     return res.status(404).json('Catway not found');
