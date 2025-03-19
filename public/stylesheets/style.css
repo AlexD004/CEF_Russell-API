@@ -47,7 +47,9 @@ ul, li {
 .actions button:hover {
   background: #00B7FF;
 }
-
+.actions button#doc {
+  margin-top: 50px;
+}
 .actions button.deleteBtn {
   background: red;
   color:#fff;

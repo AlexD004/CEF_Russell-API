@@ -5,10 +5,6 @@ const { checkJWT } = require('../middlewares/private')
 
 const userRouter = require('../routes/users')
 const catwaysRouter = require('../routes/catways');
-/*const {
-  formCreateCatway,
-  formUpdateCatway
-} = require('../services/catways.js')*/
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
