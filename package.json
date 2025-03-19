@@ -1,6 +1,6 @@
 {
   "name": "russell-api",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "env-cmd -f ./env/.env nodemon ./bin/www",
@@ -30,9 +30,9 @@
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
-    "chai": "^5.2.0",
     "env-cmd": "^10.1.0",
     "mocha": "^11.1.0",
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "supertest": "^7.0.0"
   }
 }

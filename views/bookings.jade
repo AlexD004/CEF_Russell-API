@@ -7,7 +7,7 @@ block content
     for booking in bookings
         a(href="/catways/#{catwayNumber}/reservations/#{booking.bookId}")
             li.itemCard
-                h3 Réservation N°#{booking._id}
+                h3 Réservation N°#{booking.bookId}
                 br
                 p Client : #{booking.clientName}
                 p Bateau : #{booking.boatName}
